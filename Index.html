@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের ১ বছর - মাবরুর ও নবীহা</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffeef8, #ffcce0);
+            color: #333;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        header { padding: 50px 20px; }
+        h1 { color: #d63384; font-size: 2.2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .letter {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: left;
+            padding: 20px;
+            background: #fff;
+            border-left: 6px solid #ff1493;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* স্লাইডার স্টাইল */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px; /* তোমার ছবির সাইজ অনুযায়ী এটা কমাতে বা বাড়াতে পারো */
+            overflow: hidden;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* রঙিন হার্ট অ্যানিমেশন */
+        .heart {
+            position: fixed;
+            top: -10%;
+            font-size: 22px;
+            user-select: none;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body onclick="document.getElementById('bgMusic').play()" ontouchstart="document.getElementById('bgMusic').play()">
+
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <header>
+        <h1>শুভ ১ম বার্ষিকী, নবীহা! ❤️</h1>
+        <p>মাবরুর-এর পক্ষ থেকে এক বছরের ভালোবাসা</p>
+    </header>
+
+    <div class="container">
+        <div class="letter">
+            <p>প্রিয় নবীহা,</p>
+            <p>আজকের এই বিশেষ দিনে আমাদের কাটানো ১ বছরের কিছু সুন্দর মুহূর্ত স্লাইড আকারে সাজিয়ে রাখলাম। প্রতিটি ছবিতে আমাদের ভালোবাসা মিশে আছে। (এখানে তোমার নিজের কথাগুলো আরও বড় করে লিখতে পারো)।</p>
+            <p>ভালোবাসি তোমায় অনেক! ❤️</p>
+        </div>
+
+        <h3>আমাদের স্মৃতিগুলো... 📸</h3>
+        <div class="slider-container">
+            <div class="slides"><img src="pic1.jpg"></div>
+            <div class="slides"><img src="pic2.jpg"></div>
+            <div class="slides"><img src="pic3.jpg"></div>
+            <div class="slides"><img src="pic4.jpg"></div>
+            <div class="slides"><img src="pic5.jpg"></div>
+            <div class="slides"><img src="pic6.jpg"></div>
+            <div class="slides"><img src="pic7.jpg"></div>
+            <div class="slides"><img src="pic8.jpg"></div>
+            <div class="slides"><img src="pic9.jpg"></div>
+            <div class="slides"><img src="pic10.jpg"></div>
+        </div>
+    </div>
+
+    <script>
+        // স্লাইডার ফাংশন
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // ৩ সেকেন্ড পরপর ছবি পাল্টাবে
+        }
+
+        // রঙিন হার্ট ঝরানোর ফাংশন (সাদা, কালো, লাল, গোলাপি সব মিক্স)
+        const colors = ['#ff69b4', '#ff1493', '#ff0000', '#ffd700', '#ffffff', '#333333'];
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
